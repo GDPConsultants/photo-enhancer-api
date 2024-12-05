@@ -11,6 +11,9 @@ Original file is located at
 !pip uninstall rembg -y
 !pip install rembg
 !uvicorn main:app --host 0.0.0.0 --port 8000
+!pip install fastapi
+from fastapi import FastAPI
+app = FastAPI()
 
 from fastapi import FastAPI, File, UploadFile
 from PIL import Image, ImageEnhance
@@ -64,3 +67,6 @@ async def change_background(file: UploadFile, new_bg: UploadFile = None):
 @app.get("/health")
 def health():
     return {"status": "API is running"}
+
+
+
